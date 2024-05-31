@@ -1,3 +1,6 @@
-const allowedOrigins = ["http://localhost:3000", "fitness-Tracker.tkrejci.cz"];
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://fitness-tracker.tkrejci.cz",
+];
 
 module.exports = allowedOrigins;

@@ -16,6 +16,11 @@ const workoutSchema = new Schema(
       type: Number,
       required: true,
     },
+    category: {
+      type: String,
+      enum: ["prsa", "záda", "biceps", "triceps", "nohy"],
+      required: true,
+    },
   },
   { timestamps: true }
 );
