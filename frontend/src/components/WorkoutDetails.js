@@ -5,11 +5,13 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
-
   const handleClick = async () => {
-    const response = await fetch("/api/workouts/" + workout._id, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/workouts/` + workout._id,
+      {
+        method: "DELETE",
+      }
+    );
     const json = await response.json();
 
     if (response.ok) {
@@ -18,7 +20,7 @@ const WorkoutDetails = ({ workout }) => {
   };
 
   return (
-    <div className="workout-details">
+    <div className="workout-details bg-gray-600">
       <h4>{workout.title}</h4>
       <p>
         <strong>Váha (kg): </strong>

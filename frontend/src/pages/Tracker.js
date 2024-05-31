@@ -10,32 +10,35 @@ const Tracker = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts");
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/workouts/`
+      );
       const json = await response.json();
 
       if (response.ok) {
         dispatch({ type: "SET_WORKOUTS", payload: json });
       }
     };
-
     fetchWorkouts();
   }, [dispatch]);
 
   return (
-    <div className="container grid grid-cols-2 gap-[100px] mt-20">
-      <div className="workouts">
-        {workouts?.map((workout) => (
-          <WorkoutDetails
-            className="col-span-3"
-            workout={workout}
-            key={workout._id}
-          />
-        ))}
-        {workouts?.length === 0 && (
-          <h3 className="text-[4rem]">Tady nic není 💩</h3>
-        )}
+    <div className="">
+      <div className="container grid grid-cols-2 gap-[100px] pt-20 ">
+        <div className="workouts">
+          {workouts?.map((workout) => (
+            <WorkoutDetails
+              className="col-span-3"
+              workout={workout}
+              key={workout._id}
+            />
+          ))}
+          {workouts?.length === 0 && (
+            <h3 className="text-[4rem]">Tady nic není 💩</h3>
+          )}
+        </div>
+        <WorkoutForm className="col-span-1" />
       </div>
-      <WorkoutForm className="col-span-1" />
     </div>
   );
 };
